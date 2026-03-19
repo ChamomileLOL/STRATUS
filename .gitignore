@@ -1,0 +1,9 @@
+# THE WORLDLY NOISE (Ignore these)
+node_modules/
+dist/
+.env
+.DS_Store
+
+# CLIENT SPECIFIC NOISE
+client/node_modules/
+client/dist/
