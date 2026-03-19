@@ -7,7 +7,7 @@ function App() {
   const verifyIdentity = async () => {
     try {
       // THE NARROW PATH: Only 'FATHER' opens the gate.
-      const response = await axios.get('http://localhost:5000/status', {
+      const response = await axios.get('https://stratus-backend.onrender.com/status', {
         headers: { 'identity-claim': 'FATHER' }
       });
       setIdentity(response.data.status);
