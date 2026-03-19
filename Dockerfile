@@ -1,5 +1,5 @@
 # 1. THE FOUNDATION: We build upon a pure Linux/Node environment
-FROM node:18-alpine
+FROM node:22-alpine
 
 # 2. THE SANCTUM: We define the working directory inside the container
 WORKDIR /app
