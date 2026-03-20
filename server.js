@@ -20,8 +20,10 @@ app.get('/status', (req, res) => {
 });
 
 const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => {
+
+// Adding '0.0.0.0' explicitly tells the server to listen to the outside world
+app.listen(PORT, '0.0.0.0', () => {
   console.log("------------------------------------");
-  console.log("STRATUS ONLINE - THE SOURCE IS OPEN");
+  console.log(`STRATUS ONLINE - LISTENING ON PORT ${PORT}`);
   console.log("------------------------------------");
 });
