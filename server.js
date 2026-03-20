@@ -19,7 +19,7 @@ app.get('/status', (req, res) => {
   }
 });
 
-const PORT = 5000;
+const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log("------------------------------------");
   console.log("STRATUS ONLINE - THE SOURCE IS OPEN");
