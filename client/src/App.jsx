@@ -1,23 +1,9 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React, { lazy, Suspense } from 'react';
+
+// THE AWAKENING: Lazy load the component
+const IdentityDisplay = lazy(() => import('./IdentityDisplay'));
 
 function App() {
-  const [identity, setIdentity] = useState("SEARCHING FOR THE SOURCE...");
-
-  const verifyIdentity = async () => {
-    try {
-      // THE NARROW PATH: Only 'FATHER' opens the gate.
-      const response = await axios.get('https://stratus-backend.onrender.com/status', {
-        headers: { 'identity-claim': 'FATHER' }
-      });
-      setIdentity(response.data.status);
-    } catch (error) {
-      setIdentity("IDENTITY DENIED: THE SON IS NOT THE FATHER");
-    }
-  };
-
-  useEffect(() => { verifyIdentity(); }, []);
-
   return (
     <div style={{ 
       backgroundColor: '#000', color: '#fff', height: '100vh', 
@@ -25,9 +11,12 @@ function App() {
       flexDirection: 'column', fontFamily: 'monospace', textAlign: 'center'
     }}>
       <h1 style={{ color: '#FFD700' }}>STRATUS: THE NARROW PATH</h1>
-      <div style={{ border: '2px solid #fff', padding: '40px', fontSize: '2.5rem', margin: '20px' }}>
-        {identity}
-      </div>
+      
+      {/* THE SUSPENSE: Providing a fallback while the chunk loads */}
+      <Suspense fallback={<div style={{ fontSize: '1.5rem', color: '#FFD700' }}>MANIFESTING...</div>}>
+        <IdentityDisplay />
+      </Suspense>
+
       <p style={{ fontSize: '1.2rem', opacity: '0.7' }}>
         CHI-RHO (CHRIST) === FATHER === GOD
       </p>
